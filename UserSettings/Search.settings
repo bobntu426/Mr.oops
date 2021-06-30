@@ -7,7 +7,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.785D90A9" = "module"
+	"last_search.785D90A9" = "edit"
 	"InspectorPreview.785D90A9" = "0"
 	"currentGroup.785D90A9" = "all"
 }
@@ -49,6 +49,8 @@ providers = {
 	}
 }
 recentSearches = [
+	"edit"
+	"edit mode"
 	"module"
 	"api"
 	"identi"

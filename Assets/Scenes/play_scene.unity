@@ -541,6 +541,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -797269007687352565, guid: f86c5886f224a0349be26b7a78b9e585,
+        type: 3}
+      propertyPath: round_touch
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1385592409095116851, guid: f86c5886f224a0349be26b7a78b9e585,
         type: 3}
       propertyPath: m_Enabled
