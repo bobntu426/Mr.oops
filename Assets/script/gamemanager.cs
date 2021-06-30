@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager manager;
@@ -12,6 +11,7 @@ public class gamemanager : MonoBehaviour
     public float spawn_ball_speed, round_preriod;
     public Vector2[,] position;
     public Vector2 man_pos;
+    public bool lose;
 
     void Awake()
     {

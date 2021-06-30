@@ -9,10 +9,10 @@ public class man_control : MonoBehaviour
     Rigidbody2D R;
     private Vector2 start_pos = new Vector2();
     Vector2 nowFingerPos = new Vector2();
-    public bool startPosFlag= true;
+    public bool startPosFlag = true;
     public bool round_touch = false;
     float xMoveDistance, yMoveDistance;
-    public bool a=true;
+    public bool a = true;
     void Start()
     {
         //允許多點觸碰
@@ -26,6 +26,8 @@ public class man_control : MonoBehaviour
         MobileInput();
         if (Input.touchCount > 0)
             print(Input.GetTouch(0).phase);
+        if (gamemanager.manager.lose == true)
+            Invoke("to_finish", 3f);
         //判斷平台
 #if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
 
@@ -43,7 +45,7 @@ public class man_control : MonoBehaviour
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow)&& gamemanager.manager.man_pos.y < 5)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && gamemanager.manager.man_pos.y < 5)
             {
                 gamemanager.manager.man_pos += new Vector2(0, 1f);
                 transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
@@ -66,17 +68,18 @@ public class man_control : MonoBehaviour
         }
 
     }
-    void MobileInput() {
+    void MobileInput()
+    {
         if (Input.touchCount > 0)
         {
             if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0, 0))
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Began && startPosFlag == true )
+                if (Input.GetTouch(0).phase == TouchPhase.Began && startPosFlag == true)
                 {
                     start_pos = Input.GetTouch(0).position;
                     startPosFlag = false;
                 }
-                if (Input.GetTouch(0).phase == TouchPhase.Moved&& a == true)
+                if (Input.GetTouch(0).phase == TouchPhase.Moved && a == true)
                 {
                     round_touch = true;
                     a = false;
@@ -88,7 +91,7 @@ public class man_control : MonoBehaviour
                 }
                 nowFingerPos = Input.GetTouch(0).position;
 
-                if (judgeFinger() == 1 && gamemanager.manager.man_pos.y < 5&&round_touch==true)
+                if (judgeFinger() == 1 && gamemanager.manager.man_pos.y < 5 && round_touch == true)
                 {
                     gamemanager.manager.man_pos += new Vector2(0, 1f);
                     transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
@@ -112,14 +115,13 @@ public class man_control : MonoBehaviour
                     transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
                     round_touch = false;
                 }
-                
+
             }
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //gameObject.SetActive(false);
-
+        gamemanager.manager.lose = true;
     }
     /**
 
@@ -150,7 +152,7 @@ public class man_control : MonoBehaviour
     }
 
 
-     //判斷是否為多點觸控 
+    //判斷是否為多點觸控 
 
     public static bool multipointTouch()
     {
@@ -198,5 +200,9 @@ public class man_control : MonoBehaviour
             }
         }
         return backValue;
+    }
+    void to_finish()
+    {
+        SceneManager.LoadScene(2);
     }
 }

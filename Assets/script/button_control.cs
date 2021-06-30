@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class button_control : MonoBehaviour
 {
@@ -14,5 +11,6 @@ public class button_control : MonoBehaviour
     }
     public void setting_button() { SceneManager.LoadScene(2); }
     public void return_button() { SceneManager.LoadScene(0); }
-   
+    public void restart_button() { SceneManager.LoadScene(1); }
+
 }
