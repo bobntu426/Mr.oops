@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class man_control : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class man_control : MonoBehaviour
     public bool round_touch = false;
     float xMoveDistance, yMoveDistance;
     public bool a = true;
+    public int temp = 0;
     void Start()
     {
         //允許多點觸碰
@@ -27,7 +29,7 @@ public class man_control : MonoBehaviour
         if (Input.touchCount > 0)
             print(Input.GetTouch(0).phase);
         if (gamemanager.manager.lose == true)
-            Invoke("to_finish", 3f);
+            Invoke("to_finish", 2f);
         //判斷平台
 #if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
 
@@ -47,23 +49,44 @@ public class man_control : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) && gamemanager.manager.man_pos.y < 5)
             {
-                gamemanager.manager.man_pos += new Vector2(0, 1f);
-                transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y + 1] == false)
+                {
+                    Instantiate(gamemanager.manager.sound);
+                    gamemanager.manager.man_pos += new Vector2(0, 1f);
+                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                    
+                }
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && gamemanager.manager.man_pos.y > 0)
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && gamemanager.manager.man_pos.y > 0)
             {
-                gamemanager.manager.man_pos += new Vector2(0, -1f);
-                transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y - 1] == false)
+                {
+                    Instantiate(gamemanager.manager.sound);
+                    gamemanager.manager.man_pos += new Vector2(0, -1f);
+                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                    
+                }
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && gamemanager.manager.man_pos.x > 0)
+            
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && gamemanager.manager.man_pos.x > 0 )
             {
-                gamemanager.manager.man_pos += new Vector2(-1f, 0);
-                transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x-1, (int)gamemanager.manager.man_pos.y] == false)
+                {
+                    Instantiate(gamemanager.manager.sound);
+                    gamemanager.manager.man_pos += new Vector2(-1f, 0);
+                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                    
+                }
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) && gamemanager.manager.man_pos.x < 5)
+            else if (Input.GetKeyDown(KeyCode.RightArrow) && gamemanager.manager.man_pos.x < 5)
             {
-                gamemanager.manager.man_pos += new Vector2(1f, 0);
-                transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x+1, (int)gamemanager.manager.man_pos.y] == false)
+                {
+                    Instantiate(gamemanager.manager.sound);
+                    gamemanager.manager.man_pos += new Vector2(1f, 0);
+                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                    
+                }
             }
         }
 
@@ -82,6 +105,7 @@ public class man_control : MonoBehaviour
                 if (Input.GetTouch(0).phase == TouchPhase.Moved && a == true)
                 {
                     round_touch = true;
+                    round_touch = true;
                     a = false;
                 }
                 if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -91,29 +115,51 @@ public class man_control : MonoBehaviour
                 }
                 nowFingerPos = Input.GetTouch(0).position;
 
-                if (judgeFinger() == 1 && gamemanager.manager.man_pos.y < 5 && round_touch == true)
+                if (judgeFinger() == 1 && gamemanager.manager.man_pos.y < 5 && (round_touch == true||( temp -2>0&&a==false)))
                 {
-                    gamemanager.manager.man_pos += new Vector2(0, 1f);
-                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
-                    round_touch = false;
+                    if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y + 1] == false)
+                    {
+                        Instantiate(gamemanager.manager.sound);
+                        gamemanager.manager.man_pos += new Vector2(0, 1f);
+                        transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                        round_touch = false;
+                        temp = 1;
+                    }
                 }
-                else if (judgeFinger() == 2 && gamemanager.manager.man_pos.y > 0 && round_touch == true)
+                else if (judgeFinger() == 2 && gamemanager.manager.man_pos.y > 0 && (round_touch == true || (temp - 2 > 0 && a == false)))
                 {
-                    gamemanager.manager.man_pos += new Vector2(0, -1f);
-                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
-                    round_touch = false;
+                    if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y - 1] == false)
+                    {
+                        Instantiate(gamemanager.manager.sound);
+                        gamemanager.manager.man_pos += new Vector2(0, -1f);
+                        transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                        round_touch = false;
+                        temp = 2;
+                    }
+
                 }
-                else if (judgeFinger() == 4 && gamemanager.manager.man_pos.x > 0 && round_touch == true)
+                else if (judgeFinger() == 4 && gamemanager.manager.man_pos.x > 0 && (round_touch == true || (temp + 2 < 5 && a == false)))
                 {
-                    gamemanager.manager.man_pos += new Vector2(-1f, 0);
-                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
-                    round_touch = false;
+                    if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x - 1, (int)gamemanager.manager.man_pos.y] == false)
+                    {
+                        Instantiate(gamemanager.manager.sound);
+                        gamemanager.manager.man_pos += new Vector2(-1f, 0);
+                        transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                        round_touch = false;
+                        temp = 4;
+                    }
+
                 }
-                else if (judgeFinger() == 3 && gamemanager.manager.man_pos.x < 5 && round_touch == true)
+                else if (judgeFinger() == 3 && gamemanager.manager.man_pos.x < 5 && (round_touch == true || (temp + 2 < 5 && a == false)))
                 {
-                    gamemanager.manager.man_pos += new Vector2(1f, 0);
-                    transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
-                    round_touch = false;
+                    if (gamemanager.manager.has_ball[(int)gamemanager.manager.man_pos.x + 1, (int)gamemanager.manager.man_pos.y] == false)
+                    {
+                        Instantiate(gamemanager.manager.sound);
+                        gamemanager.manager.man_pos += new Vector2(1f, 0);
+                        transform.position = gamemanager.manager.position[(int)gamemanager.manager.man_pos.x, (int)gamemanager.manager.man_pos.y];
+                        round_touch = false;
+                        temp = 3;
+                    }
                 }
 
             }
@@ -121,6 +167,7 @@ public class man_control : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         gamemanager.manager.lose = true;
     }
     /**
@@ -130,7 +177,6 @@ public class man_control : MonoBehaviour
      **/
 
     public static bool singleTouch()
-
     {
         if (Input.touchCount == 1)
             return true;

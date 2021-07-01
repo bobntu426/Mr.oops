@@ -307,8 +307,12 @@
 -r:"Library/Bee/artifacts/1300b0aP.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
-"Assets/script/ball_cantrol.cs"
+"Assets/prefab/mushroom/mushroom_sound.cs"
+"Assets/script/all_level_manager.cs"
+"Assets/script/ball_control.cs"
+"Assets/script/ball_detect.cs"
 "Assets/script/button_control.cs"
+"Assets/script/finish_scene.cs"
 "Assets/script/gamemanager.cs"
 "Assets/script/man_control.cs"
 -langversion:8.0

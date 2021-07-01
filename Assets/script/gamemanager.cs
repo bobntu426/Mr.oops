@@ -3,7 +3,7 @@ public class gamemanager : MonoBehaviour
 {
     public static gamemanager manager;
     public GameObject[] game_pointer;
-    public GameObject ball, pointer, man;
+    public GameObject ball, pointer, man,detect,sound;
     public int control, pointer_num, round, temp_round;
     public float[] road_postion;
     public float pointer_out_pos, ball_speed;
@@ -12,7 +12,7 @@ public class gamemanager : MonoBehaviour
     public Vector2[,] position;
     public Vector2 man_pos;
     public bool lose;
-
+    public bool[,] has_ball;
     void Awake()
     {
         if (manager == null)
@@ -22,12 +22,16 @@ public class gamemanager : MonoBehaviour
     }
     void Start()
     {
+
         position = new Vector2[6, 6];
+        has_ball = new bool[6, 6];
         for (int i = 0; i < 6; i++)
         {
             for (int k = 0; k < 6; k++)
             {
                 position[i, k] = new Vector2(road_postion[i], road_postion[k]);
+                Instantiate(detect, position[i, k], Quaternion.identity);
+                has_ball[i, k] = false;
             }
         }
         man_pos = new Vector2(2f, 2f);
@@ -91,7 +95,8 @@ public class gamemanager : MonoBehaviour
     }
     void ball_roll()
     {
-        round++;
+        if(lose==false)
+            round++;
         if (round - temp_round == 5)
         {
             change_freq();
@@ -105,8 +110,6 @@ public class gamemanager : MonoBehaviour
             else if (game_ball[i].transform.position.x == pointer_out_pos) { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(-ball_speed, 0); }
             else { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(ball_speed, 0); }
             DestroyImmediate(game_pointer[i]);
-            /*if (spawn_ball_speed > 0.05)
-                spawn_ball_speed -= 0.01f;*/
         }
 
     }
