@@ -371,6 +371,7 @@
 "Assets/script/finish_scene.cs"
 "Assets/script/gamemanager.cs"
 "Assets/script/man_control.cs"
+"Assets/script/scroll_control.cs"
 -langversion:8.0
 
 /deterministic
