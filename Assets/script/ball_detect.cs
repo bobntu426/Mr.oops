@@ -19,7 +19,6 @@ public class ball_detect : MonoBehaviour
             a = 0;
             b = 0;
         }
-        print(a + "" + b);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

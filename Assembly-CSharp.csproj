@@ -61,12 +61,13 @@
   <ItemGroup>
     <Compile Include="Assets\script\button_control.cs" />
     <Compile Include="Assets\script\man_control.cs" />
-    <Compile Include="Assets\prefab\mushroom\mushroom_sound.cs" />
+    <Compile Include="Assets\prefab\主角\mushroom\mushroom_sound.cs" />
     <Compile Include="Assets\script\all_level_manager.cs" />
     <Compile Include="Assets\script\finish_scene.cs" />
     <Compile Include="Assets\script\ball_detect.cs" />
     <Compile Include="Assets\script\ball_control.cs" />
     <Compile Include="Assets\script\gamemanager.cs" />
+    <Compile Include="Assets\script\android_manager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
