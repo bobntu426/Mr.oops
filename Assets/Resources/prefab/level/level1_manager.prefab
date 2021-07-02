@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8684484074114863494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8684484074114863495}
+  - component: {fileID: 4309319356158052097}
+  m_Layer: 0
+  m_Name: level1_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8684484074114863495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684484074114863494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 386.96613, y: 179.99083, z: -77.34678}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4309319356158052097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684484074114863494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce8e88626f79fe4cbb6dd0a9a9fe663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game_pointer: []
+  ball: {fileID: 0}
+  pointer: {fileID: 0}
+  man: {fileID: 0}
+  detect: {fileID: 0}
+  sound: {fileID: 0}
+  control: 0
+  pointer_num: 0
+  round: 0
+  temp_round: 0
+  road_postion: []
+  pointer_out_pos: 0
+  ball_speed: 0
+  ball_out_pos: 0
+  spawn_ball_speed: 0
+  round_preriod: 0
+  man_pos: {x: 0, y: 0}
+  lose: 0

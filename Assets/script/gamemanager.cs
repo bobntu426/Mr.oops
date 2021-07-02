@@ -22,7 +22,8 @@ public class gamemanager : MonoBehaviour
     }
     void Start()
     {
-
+        man = Instantiate(playerprefs_info.player.character);
+        man.AddComponent<man_control>();
         position = new Vector2[6, 6];
         has_ball = new bool[6, 6];
         for (int i = 0; i < 6; i++)
@@ -97,7 +98,7 @@ public class gamemanager : MonoBehaviour
     {
         if(lose==false)
             round++;
-        if (round - temp_round == 5)
+        if (round - temp_round == 10)
         {
             change_freq();
         }

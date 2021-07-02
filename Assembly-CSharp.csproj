@@ -60,15 +60,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\script\button_control.cs" />
-    <Compile Include="Assets\script\man_control.cs" />
-    <Compile Include="Assets\prefab\主角\mushroom\mushroom_sound.cs" />
-    <Compile Include="Assets\script\all_level_manager.cs" />
+    <Compile Include="Assets\script\infinit_mode\man_control.cs" />
+    <Compile Include="Assets\script\move_sound.cs" />
+    <Compile Include="Assets\script\high_score.cs" />
     <Compile Include="Assets\script\android_manager.cs" />
-    <Compile Include="Assets\script\finish_scene.cs" />
-    <Compile Include="Assets\script\ball_detect.cs" />
-    <Compile Include="Assets\script\ball_control.cs" />
+    <Compile Include="Assets\script\infinit_mode\finish_scene.cs" />
+    <Compile Include="Assets\script\infinit_mode\ball_detect.cs" />
+    <Compile Include="Assets\script\level\level1\level1_manager.cs" />
+    <Compile Include="Assets\script\level_manager.cs" />
+    <Compile Include="Assets\script\level\level1\level1_detect.cs" />
+    <Compile Include="Assets\script\infinit_mode\ball_control.cs" />
+    <Compile Include="Assets\script\playerprefs_info.cs" />
     <Compile Include="Assets\script\scroll_control.cs" />
     <Compile Include="Assets\script\gamemanager.cs" />
+    <Compile Include="Assets\script\level\level1\level1_man.cs" />
+    <Compile Include="Assets\script\level\level1\level1_button.cs" />
+    <Compile Include="Assets\script\choose_level_button.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
