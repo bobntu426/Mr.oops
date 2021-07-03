@@ -17,8 +17,7 @@ public class level1_button : MonoBehaviour
     public void pause_restart_button()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        SceneManager.LoadScene("level1_scene");
     }
 
     public void pause_button()
@@ -38,6 +37,12 @@ public class level1_button : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(level_index);
+
+    }
+    public void return_choose_button()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("choose_level");
 
     }
 }

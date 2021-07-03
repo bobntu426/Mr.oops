@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class level1_manager : MonoBehaviour
 {
     public static level1_manager manager;
@@ -13,6 +14,7 @@ public class level1_manager : MonoBehaviour
     public Vector2 man_pos;
     public bool lose;
     public bool[,] has_ball;
+    
     void Awake()
     {
         if (manager == null)
@@ -111,7 +113,14 @@ public class level1_manager : MonoBehaviour
     {
         if (lose == false)
             round++;
-        if (round - temp_round == 20)
+        if (round == 20)
+        {
+            round--;
+            CancelInvoke("a_round");
+            Invoke("pass", 3f);
+        }
+        
+        if (round - temp_round == 10)
         {
             change_freq();
         }
@@ -125,7 +134,10 @@ public class level1_manager : MonoBehaviour
             else { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(ball_speed, 0); }
             DestroyImmediate(game_pointer[i]);
         }
+        
 
+
+        
     }
     public void change_freq()
     {
@@ -133,11 +145,21 @@ public class level1_manager : MonoBehaviour
         CancelInvoke("a_round");
         if (round_preriod > 0.6)
         {
-            round_preriod -= 0.12f;
+            round_preriod -= 0.2f;
         }
         if (spawn_ball_speed > 0.2)
-            spawn_ball_speed -= 0.1f;
+            spawn_ball_speed -= 0.2f;
         InvokeRepeating("a_round", 3f, round_preriod);
     }
+    void pass()
+    {
+        round++;
+        if (round > playerprefs_info.player.level1_score)
+        {            
+            PlayerPrefs.SetInt("level1_score", round);
+            playerprefs_info.player.level1_score = PlayerPrefs.GetInt("level1_score");
+        }
 
+            SceneManager.LoadScene("level1_finish_scene");
+    }
 }

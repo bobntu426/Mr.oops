@@ -66,16 +66,18 @@
     <Compile Include="Assets\script\android_manager.cs" />
     <Compile Include="Assets\script\infinit_mode\finish_scene.cs" />
     <Compile Include="Assets\script\infinit_mode\ball_detect.cs" />
+    <Compile Include="Assets\script\character_button.cs" />
     <Compile Include="Assets\script\level\level1\level1_manager.cs" />
-    <Compile Include="Assets\script\level_manager.cs" />
+    <Compile Include="Assets\script\level\level_manager.cs" />
     <Compile Include="Assets\script\level\level1\level1_detect.cs" />
-    <Compile Include="Assets\script\infinit_mode\ball_control.cs" />
+    <Compile Include="Assets\script\ball\stone_control.cs" />
     <Compile Include="Assets\script\playerprefs_info.cs" />
-    <Compile Include="Assets\script\scroll_control.cs" />
     <Compile Include="Assets\script\gamemanager.cs" />
     <Compile Include="Assets\script\level\level1\level1_man.cs" />
+    <Compile Include="Assets\script\level\level1\level1_finish.cs" />
     <Compile Include="Assets\script\level\level1\level1_button.cs" />
     <Compile Include="Assets\script\choose_level_button.cs" />
+    <Compile Include="Assets\script\ball\iron_control.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

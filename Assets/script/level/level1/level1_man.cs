@@ -249,6 +249,13 @@ public class level1_man : MonoBehaviour
     }
     void to_finish()
     {
-        //SceneManager.LoadScene(2);
+        if (level1_manager.manager.round > playerprefs_info.player.level1_score)
+        {
+            PlayerPrefs.SetInt("level1_score", level1_manager.manager.round);
+            playerprefs_info.player.level1_score = PlayerPrefs.GetInt("level1_score");
+
+        }
+            
+        SceneManager.LoadScene("level1_finish_scene");
     }
 }

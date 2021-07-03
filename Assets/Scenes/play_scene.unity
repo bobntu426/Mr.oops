@@ -760,6 +760,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7483659684017927948, guid: 4755f6bd4273c2f4ba95106a9e970530,
         type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 7584684400209052810, guid: 1832f501111ddd548a3ad98d0cf9683c,
+        type: 3}
+    - target: {fileID: 7483659684017927948, guid: 4755f6bd4273c2f4ba95106a9e970530,
+        type: 3}
       propertyPath: sound
       value: 
       objectReference: {fileID: 6554964333451321731, guid: ba4b02a474d712c4db632de9a35baf04,
@@ -770,6 +776,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4975647136097460845, guid: 277b7621c9ea8fc4da0f67c2e173f99f,
         type: 3}
+    - target: {fileID: 7483659684017927948, guid: 4755f6bd4273c2f4ba95106a9e970530,
+        type: 3}
+      propertyPath: ball_speed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7483659684017927949, guid: 4755f6bd4273c2f4ba95106a9e970530,
         type: 3}
       propertyPath: m_RootOrder
