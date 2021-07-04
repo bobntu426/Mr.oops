@@ -8,8 +8,9 @@ public class level_manager : MonoBehaviour
     public static level_manager manager;
     public GameObject[] level;
     public GameObject level_status;
-    public GameObject black_star1, black_star2, black_star3, star1, star2, star3, black_crown, crown,level_text,pass_text,highscore_text;
+    public GameObject black_star1, black_star2, black_star3, star1, star2, star3, black_crown, crown,level_text,pass_text,highscore_text,goal1UI,goal2UI,goal3UI,goal4UI;
     public int choose_level;
+    public Vector4[] goal;
 
     void Awake()
     {
@@ -20,14 +21,18 @@ public class level_manager : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < playerprefs_info.player.high_level; i++)
+        
+        for (int i = 0; i < playerprefs_info.player.high_level+1; i++)
         {
-            level[i + 1].SetActive(true);
+            level[i].SetActive(true);
         }
     }
     public void check_pass(int star1_score,int star2_score, int star3_score , int crown_score, string level_str)
     {
-        
+        goal1UI.GetComponent<Text>().text = star1_score.ToString();
+        goal2UI.GetComponent<Text>().text = star2_score.ToString();
+        goal3UI.GetComponent<Text>().text = star3_score.ToString();
+        goal4UI.GetComponent<Text>().text = crown_score.ToString();
         if (PlayerPrefs.GetInt(level_str) == crown_score)
         {
             black_crown.SetActive(false);
@@ -111,4 +116,5 @@ public class level_manager : MonoBehaviour
             level_status.SetActive(true);
         }
     }
+
 }

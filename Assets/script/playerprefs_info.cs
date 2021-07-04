@@ -9,35 +9,19 @@ public class playerprefs_info : MonoBehaviour
     //piayerprefs的key
 
     //進度
-    public int high_level;
-    public int level1_score;
-    public int level2_score;
-    public int level3_score;
-    public int level4_score;
-    public int level5_score;
-    public int level6_score;
-    public int level7_score;
-    public int level8_score;
-    public int level9_score;
-    public int level10_score;
-    public int level11_score;
-    public int level12_score;
-    public int level13_score;
-    public int level14_score;
-    public int level15_score;
-    public int level16_score;
-    public int level17_score;
-    public int level18_score;
-    public int level19_score;
-    public int level20_score;
-    public int high_score;
+    public int high_level;//已經破了第幾關了 key:
+    public int[] level_star = new int[20];//各關的星數 key:level1_star, level2_star......
+    public int[] level_score=new int[20];//各關的最高紀錄 key:level1_score, level2_score......
+    public int high_score; //計分模式最高紀錄
+    public int star;//總共獲得幾顆星星
+    public int crown;//總共獲得幾個皇冠
 
     //獲得的主角 有：1 無：0
-    public int mushroom;
-    public int ice;
-    public int sun;
-    public int dust;
-    public int virus;
+    public int mushroom;//
+    public int ice;//
+    public int sun;//
+    public int dust;//
+    public int virus;//
 
     //獲得的場景 有：1 無：0
 
@@ -49,7 +33,6 @@ public class playerprefs_info : MonoBehaviour
 
     //目前選用的場景
     public string scene_name;
-    Object scene_pre;
     public GameObject scene;
     void Awake()
     {
@@ -58,7 +41,8 @@ public class playerprefs_info : MonoBehaviour
             player = this;
         }
 
-        
+        level_star = new int[20];
+        level_score = new int[20];
         high_score = PlayerPrefs.GetInt("high_score");
         high_level = PlayerPrefs.GetInt("high_level");
         mushroom = PlayerPrefs.GetInt("mushroom");
@@ -66,33 +50,21 @@ public class playerprefs_info : MonoBehaviour
         sun = PlayerPrefs.GetInt("sun");
         dust = PlayerPrefs.GetInt("dust");
         virus = PlayerPrefs.GetInt("virus");
+        star = PlayerPrefs.GetInt("star");
+        crown = PlayerPrefs.GetInt("crown");
         character_name = PlayerPrefs.GetString("character_name");
         scene_name = PlayerPrefs.GetString("scene_name");
         character = (GameObject)Resources.Load("prefab/character/" + character_name);
         scene = (GameObject)Resources.Load("prefab/character/" + scene_name);
-        level1_score= PlayerPrefs.GetInt("level1_score"); 
-        level2_score= PlayerPrefs.GetInt("level2_score"); 
-        level3_score = PlayerPrefs.GetInt("level3_score"); 
-        level4_score = PlayerPrefs.GetInt("level4_score"); 
-        level5_score = PlayerPrefs.GetInt("level5_score"); 
-        level6_score = PlayerPrefs.GetInt("level6_score"); 
-        level7_score = PlayerPrefs.GetInt("level7_score"); 
-        level8_score = PlayerPrefs.GetInt("level8_score"); 
-        level9_score = PlayerPrefs.GetInt("level9_score"); 
-        level10_score = PlayerPrefs.GetInt("level10_score");
-        level11_score = PlayerPrefs.GetInt("level11_score");
-        level12_score = PlayerPrefs.GetInt("level12_score");
-        level13_score = PlayerPrefs.GetInt("level13_score");
-        level14_score = PlayerPrefs.GetInt("level14_score");
-        level15_score = PlayerPrefs.GetInt("level15_score");
-        level16_score = PlayerPrefs.GetInt("level16_score");
-        level17_score = PlayerPrefs.GetInt("level17_score");
-        level18_score = PlayerPrefs.GetInt("level18_score");
-        level19_score = PlayerPrefs.GetInt("level19_score");
-        level20_score = PlayerPrefs.GetInt("level20_score");
+        
+        for(int i=0;i<20;i++)
+            level_score[i]= PlayerPrefs.GetInt("level"+(i+1)+"_score");
+        for (int i = 0; i < 20; i++)
+            level_star[i] = PlayerPrefs.GetInt("level" +(i+1)+ "_star");
         if (character_name == "")
         {
             character = (GameObject)Resources.Load("prefab/character/man");
+            character_name = "man";
         }
     }
 

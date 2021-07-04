@@ -4,6 +4,7 @@ public class level1_detect : MonoBehaviour
 {
     public int index1, index2;
     public static int a = 0, b = 0;
+    public static bool[,] has_ball;
     private void Start()
     {
         index1 = b;

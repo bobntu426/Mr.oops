@@ -113,7 +113,7 @@ public class level1_manager : MonoBehaviour
     {
         if (lose == false)
             round++;
-        if (round == 20)
+        if (round == level_manager.manager.goal[0].w)
         {
             round--;
             CancelInvoke("a_round");
@@ -154,12 +154,12 @@ public class level1_manager : MonoBehaviour
     void pass()
     {
         round++;
-        if (round > playerprefs_info.player.level1_score)
+        if (round > playerprefs_info.player.level_score[0])
         {            
             PlayerPrefs.SetInt("level1_score", round);
-            playerprefs_info.player.level1_score = PlayerPrefs.GetInt("level1_score");
+            playerprefs_info.player.level_score[level_manager.manager.choose_level - 1] = PlayerPrefs.GetInt("level1_score");
         }
-
-            SceneManager.LoadScene("level1_finish_scene");
+        level_finish.round = round;
+        SceneManager.LoadScene("level_finish_scene");
     }
 }

@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class finish_scene : MonoBehaviour
 {
-    public GameObject scoreUI;
+    public GameObject scoreUI, highscore_UI;
     void Start()
     {
-        
-        Vector2 a = new Vector2(-65f, 75f);
         scoreUI.GetComponent<Text>().text = "your score : " + gamemanager.manager.round;
-        Instantiate(scoreUI, a, Quaternion.identity);
+        highscore_UI.GetComponent<Text>().text = "high score : " + playerprefs_info.player.high_score;
     }
 
 
