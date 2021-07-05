@@ -18,14 +18,13 @@ public class level_finish : MonoBehaviour
         if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_score") == (int)level_manager.manager.goal[level_manager.manager.choose_level-1].w)
         {
             PlayerPrefs.SetInt("level" + level_manager.manager.choose_level + "_star", 4);
-            PlayerPrefs.SetInt("star", playerprefs_info.player.star + 4);
+            
             if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_star") - playerprefs_info.player.level_star[level_manager.manager.choose_level - 1] == 0)
             {
                 bright_star1();
                 bright_star2();
                 bright_star3();
                 bright_crown();
-                PlayerPrefs.SetInt("crown", playerprefs_info.player.crown + 1);
             }
             else if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_star") - playerprefs_info.player.level_star[level_manager.manager.choose_level - 1] == 1)
             {
@@ -36,14 +35,13 @@ public class level_finish : MonoBehaviour
                 Invoke("bright_crown", 0.5f);
                 Invoke("enable_button", 0.7f);
                 PlayerPrefs.SetInt("crown", playerprefs_info.player.crown + 1);
-                PlayerPrefs.SetInt("star", playerprefs_info.player.star + 1);
             }
             else if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_star") - playerprefs_info.player.level_star[level_manager.manager.choose_level - 1] == 2)
             {
                 disable_button();
                 bright_star1();
                 bright_star2();
-                PlayerPrefs.SetInt("star", playerprefs_info.player.star + 2);
+                PlayerPrefs.SetInt("star", playerprefs_info.player.star + 1);
                 PlayerPrefs.SetInt("crown", playerprefs_info.player.crown + 1);
                 Invoke("bright_star3", 0.5f);
                 Invoke("bright_crown", 1f);
@@ -56,7 +54,7 @@ public class level_finish : MonoBehaviour
                 Invoke("bright_star2", 0.5f);
                 Invoke("bright_star3", 1f);
                 Invoke("bright_crown", 1.5f);
-                PlayerPrefs.SetInt("star", playerprefs_info.player.star + 3);
+                PlayerPrefs.SetInt("star", playerprefs_info.player.star + 2);
                 PlayerPrefs.SetInt("crown", playerprefs_info.player.crown + 1);
                 Invoke("enable_button", 1.7f);
             }
@@ -70,6 +68,7 @@ public class level_finish : MonoBehaviour
                 PlayerPrefs.SetInt("star", playerprefs_info.player.star + 3);
                 PlayerPrefs.SetInt("crown", playerprefs_info.player.crown + 1);
                 Invoke("enable_button", 2.2f);
+
             }
             if (playerprefs_info.player.high_level == level_manager.manager.choose_level - 1)
                 PlayerPrefs.SetInt("high_level", level_manager.manager.choose_level);
@@ -77,7 +76,6 @@ public class level_finish : MonoBehaviour
         else if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_score") >= (int)level_manager.manager.goal[level_manager.manager.choose_level - 1].z)
         {
             PlayerPrefs.SetInt("level" + level_manager.manager.choose_level + "_star", 3);
-            PlayerPrefs.SetInt("star", playerprefs_info.player.star + 3);
             if (PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_star") - playerprefs_info.player.level_star[level_manager.manager.choose_level - 1] == 0)
             {
                 bright_star1();

@@ -4,17 +4,16 @@ public class level1_manager : MonoBehaviour
 {
     public static level1_manager manager;
     public GameObject[] game_pointer;
-    public GameObject ball, pointer, man, detect, sound;
-    public int control, pointer_num, round, temp_round;
-    public float[] road_postion;
-    public float pointer_out_pos, ball_speed;
+    public GameObject ball, pointer, man, detect;
+    public int control, pointer_num, temp_round;
+    public float ball_speed;
     public float ball_out_pos;
     public float spawn_ball_speed, round_preriod;
+
     public Vector2[,] position;
-    public Vector2 man_pos;
-    public bool lose;
-    public bool[,] has_ball;
-    
+
+
+
     void Awake()
     {
         if (manager == null)
@@ -25,33 +24,31 @@ public class level1_manager : MonoBehaviour
     void Start()
     {
         man = Instantiate(playerprefs_info.player.character);
-        man.AddComponent<level1_man>();
-        position = new Vector2[6, 6];
-        has_ball = new bool[6, 6];
-        road_postion = new float[6];
-        road_postion[0] = -2.92f;
-        road_postion[1] = -1.77f;
-        road_postion[2] = -0.59f;
-        road_postion[3] = 0.59f;
-        road_postion[4] = 1.77f;
-        road_postion[5] = 2.92f;
-        pointer_out_pos = 4.25f;
+        ball_detect.has_ball = new bool[6, 6];
+        man_control.man.lose = false;
+        man_control.man.round = 0;
+        man_control.man.mode = "level";
+
+        ground_control.ground.pointer_out_pos = 4.25f;
         ball_speed = 8;
         ball_out_pos = 3.72f;
         spawn_ball_speed = 2;
         round_preriod = 2.5f;
         game_pointer = new GameObject[24];
+        position = new Vector2[6, 6];
+        man_control.man.position = new Vector2[6, 6];
         for (int i = 0; i < 6; i++)
         {
             for (int k = 0; k < 6; k++)
             {
-                position[i, k] = new Vector2(road_postion[i], road_postion[k]);
+                position[i, k] = new Vector2(ground_control.ground.road_postion[i], ground_control.ground.road_postion[k]);
+                man_control.man.position[i, k] = new Vector2(ground_control.ground.road_postion[i], ground_control.ground.road_postion[k]);
                 Instantiate(detect, position[i, k], Quaternion.identity);
-                has_ball[i, k] = false;
+                ball_detect.has_ball[i, k] = false;
             }
         }
-        man_pos = new Vector2(2f, 2f);
-        man.transform.position = position[(int)man_pos.x, (int)man_pos.y];
+        man_control.man.man_pos = new Vector2(2f, 2f);
+        man.transform.position = position[(int)man_control.man.man_pos.x, (int)man_control.man.man_pos.y];
         InvokeRepeating("a_round", 0.5f, round_preriod);
     }
     void Update()
@@ -89,38 +86,42 @@ public class level1_manager : MonoBehaviour
 
             else if (random1 == 0)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(road_postion[random2], pointer_out_pos), Quaternion.identity);
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.road_postion[random2], ground_control.ground.pointer_out_pos), Quaternion.identity);
             }
             else if (random1 == 1)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(-pointer_out_pos, road_postion[random2]), Quaternion.Euler(0, 0, 90));
+                game_pointer[i] = Instantiate(pointer, new Vector2(-ground_control.ground.pointer_out_pos, ground_control.ground.road_postion[random2]), Quaternion.Euler(0, 0, 90));
             }
             else if (random1 == 2)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(road_postion[random2], -pointer_out_pos), Quaternion.Euler(0, 0, 180));
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.road_postion[random2], -ground_control.ground.pointer_out_pos), Quaternion.Euler(0, 0, 180));
             }
             else
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(pointer_out_pos, road_postion[random2]), Quaternion.Euler(0, 0, 270));
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.pointer_out_pos, ground_control.ground.road_postion[random2]), Quaternion.Euler(0, 0, 270));
             }
             temp1[i] = random1;
             temp2[i] = random2;
             pointer_num++;
+            if (man_control.man.round == 0)
+                break;
+            if (man_control.man.round == 1&& pointer_num==2)
+                break;
         };
         Invoke("ball_roll", spawn_ball_speed);
     }
     void ball_roll()
     {
-        if (lose == false)
-            round++;
-        if (round == level_manager.manager.goal[0].w)
+        if (man_control.man.lose == false)
+            man_control.man.round++;
+        if (man_control.man.round == level_manager.manager.goal[0].w)
         {
-            round--;
+            man_control.man.round--;
             CancelInvoke("a_round");
             Invoke("pass", 3f);
         }
         
-        if (round - temp_round == 10)
+        if (man_control.man.round - temp_round == 10)
         {
             change_freq();
         }
@@ -128,10 +129,6 @@ public class level1_manager : MonoBehaviour
         {
             GameObject[] game_ball = new GameObject[24];
             game_ball[i] = Instantiate(ball, game_pointer[i].transform.position, Quaternion.identity);
-            if (game_ball[i].transform.position.y == pointer_out_pos) { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(0, -ball_speed); }
-            else if (game_ball[i].transform.position.y == -pointer_out_pos) { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(0, ball_speed); }
-            else if (game_ball[i].transform.position.x == pointer_out_pos) { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(-ball_speed, 0); }
-            else { game_ball[i].GetComponent<Rigidbody2D>().velocity = new Vector2(ball_speed, 0); }
             DestroyImmediate(game_pointer[i]);
         }
         
@@ -141,7 +138,7 @@ public class level1_manager : MonoBehaviour
     }
     public void change_freq()
     {
-        temp_round = round;
+        temp_round = man_control.man.round;
         CancelInvoke("a_round");
         if (round_preriod > 0.6)
         {
@@ -153,13 +150,13 @@ public class level1_manager : MonoBehaviour
     }
     void pass()
     {
-        round++;
-        if (round > playerprefs_info.player.level_score[0])
+        man_control.man.round++;
+        if (man_control.man.round > playerprefs_info.player.level_score[0])
         {            
-            PlayerPrefs.SetInt("level1_score", round);
+            PlayerPrefs.SetInt("level1_score", man_control.man.round);
             playerprefs_info.player.level_score[level_manager.manager.choose_level - 1] = PlayerPrefs.GetInt("level1_score");
         }
-        level_finish.round = round;
+        level_finish.round = man_control.man.round;
         SceneManager.LoadScene("level_finish_scene");
     }
 }

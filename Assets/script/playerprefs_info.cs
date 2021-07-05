@@ -54,7 +54,7 @@ public class playerprefs_info : MonoBehaviour
         crown = PlayerPrefs.GetInt("crown");
         character_name = PlayerPrefs.GetString("character_name");
         scene_name = PlayerPrefs.GetString("scene_name");
-        character = (GameObject)Resources.Load("prefab/character/" + character_name);
+        character = (GameObject)Resources.Load("prefab/character/" + character_name+"_in_game");
         scene = (GameObject)Resources.Load("prefab/character/" + scene_name);
         
         for(int i=0;i<20;i++)
@@ -63,8 +63,8 @@ public class playerprefs_info : MonoBehaviour
             level_star[i] = PlayerPrefs.GetInt("level" +(i+1)+ "_star");
         if (character_name == "")
         {
-            character = (GameObject)Resources.Load("prefab/character/man");
-            character_name = "man";
+            character = (GameObject)Resources.Load("prefab/character/man/man_in_game");
+            character_name = "man_in_game";
         }
     }
 
@@ -79,7 +79,9 @@ public class playerprefs_info : MonoBehaviour
     }
     private void Update()
     {
-        
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

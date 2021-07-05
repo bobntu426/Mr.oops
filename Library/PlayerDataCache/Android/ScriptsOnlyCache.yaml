@@ -1,22 +1,24 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - android_manager
     - ball_detect
     - button_control
     - character_button
     - choose_level_button
     - finish_scene
     - gamemanager
+    - ground_control
     - high_score
     - iron_control
-    - level1_button
-    - level1_detect
-    - level1_finish
+    - level1_info
     - level1_manager
+    - level_button
+    - level_finish
     - level_manager
+    - man_control
     - move_sound
     - playerprefs_info
+    - status
     - stone_control
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -82,13 +84,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 4572}
     - Class: 114
-      Script: {instanceID: 4570}
-    - Class: 114
-      Script: {instanceID: 4594}
+      Script: {instanceID: 4596}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
@@ -141,13 +141,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 2996}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 4570}
+      Script: {instanceID: 4572}
     - Class: 114
-      Script: {instanceID: 5360}
+      Script: {instanceID: 5362}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
@@ -206,11 +206,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3600}
-    - Class: 114
-      Script: {instanceID: 3656}
+      Script: {instanceID: 3658}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
@@ -226,59 +224,6 @@ ScriptsOnlyBuild:
     - Class: 196
       Script: {instanceID: 0}
     - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/level/level1_finish_scene.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1568}
-    - Class: 114
-      Script: {instanceID: 1570}
-    - Class: 114
-      Script: {instanceID: 1572}
-    - Class: 114
-      Script: {instanceID: 2920}
-    - Class: 114
-      Script: {instanceID: 3182}
-    - Class: 114
-      Script: {instanceID: 5756}
-    - Class: 114
-      Script: {instanceID: 6484}
-    - Class: 114
-      Script: {instanceID: 6888}
-    - Class: 114
-      Script: {instanceID: 9604}
-    - Class: 114
-      Script: {instanceID: 9728}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -309,9 +254,66 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
+    - Class: 104
       Script: {instanceID: 0}
-    - Class: 83
+    - Class: 114
+      Script: {instanceID: 1568}
+    - Class: 114
+      Script: {instanceID: 1570}
+    - Class: 114
+      Script: {instanceID: 1572}
+    - Class: 114
+      Script: {instanceID: 2920}
+    - Class: 114
+      Script: {instanceID: 3184}
+    - Class: 114
+      Script: {instanceID: 3660}
+    - Class: 114
+      Script: {instanceID: 4696}
+    - Class: 114
+      Script: {instanceID: 5268}
+    - Class: 114
+      Script: {instanceID: 5756}
+    - Class: 114
+      Script: {instanceID: 6484}
+    - Class: 114
+      Script: {instanceID: 6888}
+    - Class: 114
+      Script: {instanceID: 9728}
+    - Class: 114
+      Script: {instanceID: 84792}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/level/level_finish_scene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -322,25 +324,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 2368}
-    - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
-    - Class: 114
-      Script: {instanceID: 3600}
-    - Class: 114
-      Script: {instanceID: 5266}
-    - Class: 114
-      Script: {instanceID: 5554}
-    - Class: 114
-      Script: {instanceID: 5614}
+      Script: {instanceID: 3184}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
       Script: {instanceID: 6484}
     - Class: 114
       Script: {instanceID: 6888}
+    - Class: 114
+      Script: {instanceID: 9604}
     - Class: 114
       Script: {instanceID: 9728}
     - Class: 115
@@ -350,8 +344,6 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -399,21 +391,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1854}
     - Class: 114
+      Script: {instanceID: 2068}
+    - Class: 114
       Script: {instanceID: 2368}
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3660}
     - Class: 114
-      Script: {instanceID: 3658}
+      Script: {instanceID: 4696}
     - Class: 114
-      Script: {instanceID: 4694}
-    - Class: 114
-      Script: {instanceID: 5266}
-    - Class: 114
-      Script: {instanceID: 5554}
+      Script: {instanceID: 5268}
     - Class: 114
       Script: {instanceID: 5614}
     - Class: 114
@@ -426,6 +416,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9728}
     - Class: 114
       Script: {instanceID: 9866}
+    - Class: 114
+      Script: {instanceID: 84792}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -465,10 +457,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -480,17 +468,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1854}
     - Class: 114
-      Script: {instanceID: 2368}
-    - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3660}
     - Class: 114
-      Script: {instanceID: 3658}
-    - Class: 114
-      Script: {instanceID: 4694}
+      Script: {instanceID: 4696}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
@@ -499,6 +483,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6888}
     - Class: 114
       Script: {instanceID: 6902}
+    - Class: 114
+      Script: {instanceID: 84792}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -549,9 +535,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
-    - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3184}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
@@ -608,17 +592,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3182}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3520}
-    - Class: 114
-      Script: {instanceID: 3600}
+      Script: {instanceID: 3522}
     - Class: 114
       Script: {instanceID: 5756}
     - Class: 114
       Script: {instanceID: 6484}
     - Class: 114
       Script: {instanceID: 6888}
+    - Class: 114
+      Script: {instanceID: 94584}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -724,7 +708,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a588c30307ef689be7e8d36f8874f0d5
+      Hash: 60aa0e9b176d53fedae3004f2edc3d9a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: man_control
@@ -839,6 +823,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: level1_info
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
@@ -941,12 +931,6 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: android_manager
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnInputFieldValueChangedMessageListener
@@ -958,7 +942,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 4efe8530f66acf8297395687e85918f9
+      Hash: 19d42d5ce489e0b7dabe2defd4f03b63
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: finish_scene
@@ -1090,7 +1074,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: iron_control
@@ -1174,7 +1158,7 @@ ScriptsOnlyBuild:
     className: UnityOnCancelMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c8ed9c27de234621c5f42a546fc7b209
+      Hash: 8b8fe008e36f2b51d5e080c3fe35fde7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: level1_manager
@@ -1186,7 +1170,7 @@ ScriptsOnlyBuild:
     className: AnimatedTile
   - hash:
       serializedVersion: 2
-      Hash: 72abcfa8b95dc32a02451fb9171f611b
+      Hash: dc5cc2279053df60d065d5679049354b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: level_manager
@@ -1204,13 +1188,7 @@ ScriptsOnlyBuild:
     className: BufferManager
   - hash:
       serializedVersion: 2
-      Hash: 53ed013c02766ce37d1ff984baf9d318
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: level1_detect
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: stone_control
@@ -1234,7 +1212,7 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: a0411be2617821800ba7390f07d9f3be
+      Hash: d0b4256ab9263ce4b1e1c56a78e25142
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: playerprefs_info
@@ -1402,7 +1380,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: c8ed9c27de234621c5f42a546fc7b209
+      Hash: 8b8fe008e36f2b51d5e080c3fe35fde7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: gamemanager
@@ -1520,12 +1498,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: a588c30307ef689be7e8d36f8874f0d5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: level1_man
   - hash:
       serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
@@ -1750,10 +1722,10 @@ ScriptsOnlyBuild:
     className: AsyncWebUtil
   - hash:
       serializedVersion: 2
-      Hash: 3155c5e4bead049e826e3a76c2ee4528
+      Hash: 07b42bf167d44a66c9dd6d0bfd7998b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: level1_finish
+    className: level_finish
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
@@ -1765,7 +1737,7 @@ ScriptsOnlyBuild:
       Hash: e3d62dbf92e402bbfb09b733cabce140
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: level1_button
+    className: level_button
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1802,6 +1774,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: d742b818cb230fdc5ca3be4737b231b9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: man_move
+  - hash:
+      serializedVersion: 2
+      Hash: 1c4c0088df4159e1181821a3a63cb426
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ground_control
+  - hash:
+      serializedVersion: 2
+      Hash: a09ef09deabf3698ad66b894ddee5e7a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: status
   platform: 13
   scenePathNames:
   - Assets/Scenes/open_scene.unity
@@ -1812,5 +1802,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/setting_scene.unity
   - Assets/Scenes/status_scene.unity
   - Assets/Scenes/character_scene.unity
-  - Assets/Scenes/level/level1_finish_scene.unity
+  - Assets/Scenes/level/level_finish_scene.unity
   playerPath: C:/unity/Mr.oops/play/Mr.oops.apk
