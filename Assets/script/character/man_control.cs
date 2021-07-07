@@ -77,24 +77,30 @@ public class man_control : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-                if (ball_detect.has_ball[(int)man_pos.x, (int)man_pos.y - 1] == false && man_pos.y > 0)
+                if (man_pos.y > 0)
                 {
-                    Instantiate(Resources.Load("prefab/character/man/move_sound"));
-                    man_pos += new Vector2(0, -1f);
-                    transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                    if (ball_detect.has_ball[(int)man_pos.x, (int)man_pos.y - 1] == false)
+                    {
+                        Instantiate(Resources.Load("prefab/character/man/move_sound"));
+                        man_pos += new Vector2(0, -1f);
+                        transform.position = position[(int)man_pos.x, (int)man_pos.y];
 
+                    }
                 }
             }
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-                if (ball_detect.has_ball[(int)man_pos.x - 1, (int)man_pos.y] == false && man_pos.x > 0)
+                if (man_pos.x > 0)
                 {
-                    Instantiate(Resources.Load("prefab/character/man/move_sound"));
-                    man_pos += new Vector2(-1f, 0);
-                    transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                    if (ball_detect.has_ball[(int)man_pos.x - 1, (int)man_pos.y] == false)
+                    {
+                        Instantiate(Resources.Load("prefab/character/man/move_sound"));
+                        man_pos += new Vector2(-1f, 0);
+                        transform.position = position[(int)man_pos.x, (int)man_pos.y];
 
+                    }
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -150,26 +156,33 @@ public class man_control : MonoBehaviour
                 else if (judgeFinger() == 2)
                 {
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-                    if (ball_detect.has_ball[(int)man_pos.x, (int)man_pos.y - 1] == false && man_pos.y > 0 && (round_touch == true || (temp - 2 > 0 && a == false)))
+
+                    if (man_pos.y > 0)
                     {
-                        Instantiate(Resources.Load("prefab/character/man/move_sound"));
-                        man_pos += new Vector2(0, -1f);
-                        transform.position = position[(int)man_pos.x, (int)man_pos.y];
-                        round_touch = false;
-                        temp = 2;
+                        if (ball_detect.has_ball[(int)man_pos.x, (int)man_pos.y - 1] == false && (round_touch == true || (temp - 2 > 0 && a == false)))
+                        {
+                            Instantiate(Resources.Load("prefab/character/man/move_sound"));
+                            man_pos += new Vector2(0, -1f);
+                            transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                            round_touch = false;
+                            temp = 2;
+                        }
                     }
 
                 }
                 else if (judgeFinger() == 4)
                 {
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-                    if (ball_detect.has_ball[(int)man_pos.x - 1, (int)man_pos.y] == false && man_pos.x > 0 && (round_touch == true || (temp + 2 < 5 && a == false)))
+                    if (man_pos.x > 0)
                     {
-                        Instantiate(Resources.Load("prefab/character/man/move_sound"));
-                        man_pos += new Vector2(-1f, 0);
-                        transform.position = position[(int)man_pos.x, (int)man_pos.y];
-                        round_touch = false;
-                        temp = 4;
+                        if (ball_detect.has_ball[(int)man_pos.x - 1, (int)man_pos.y] == false && (round_touch == true || (temp + 2 < 5 && a == false)))
+                        {
+                            Instantiate(Resources.Load("prefab/character/man/move_sound"));
+                            man_pos += new Vector2(-1f, 0);
+                            transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                            round_touch = false;
+                            temp = 4;
+                        }
                     }
 
                 }

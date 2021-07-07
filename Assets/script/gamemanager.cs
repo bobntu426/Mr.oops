@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager manager;
     public GameObject[] game_pointer;
-    public GameObject ball, pointer, man, detect;
+    public GameObject ball, pointer, man, detect,round_text;
     public int control, pointer_num, temp_round;
     public float ball_speed;
     public float ball_out_pos;
@@ -23,13 +24,14 @@ public class gamemanager : MonoBehaviour
     }
     void Start()
     {
+        ball_detect.start = false;
         man = Instantiate(playerprefs_info.player.character);
         ball_detect.has_ball = new bool[6, 6];
         man_control.man.lose = false;
         man_control.man.round = 0;
         man_control.man.mode = "infinit";
 
-        ground_control.ground.pointer_out_pos = 4.25f;
+
         ball_speed = 8;
         ball_out_pos = 3.72f;
         spawn_ball_speed = 2;
@@ -41,9 +43,11 @@ public class gamemanager : MonoBehaviour
         {
             for (int k = 0; k < 6; k++)
             {
-                position[i, k] = new Vector2(ground_control.ground.road_postion[i], ground_control.ground.road_postion[k]);
-                man_control.man.position[i, k] = new Vector2(ground_control.ground.road_postion[i], ground_control.ground.road_postion[k]);
-                Instantiate(detect, position[i, k], Quaternion.identity);
+                GameObject temp_detect;
+                position[i, k] = ground_control.ground.road_postion[i, k];
+                man_control.man.position[i, k] = ground_control.ground.road_postion[i, k];
+                temp_detect = Instantiate(detect, position[i, k], Quaternion.identity);
+                temp_detect.transform.localScale = detect.transform.localScale * 0.878f;
                 ball_detect.has_ball[i, k] = false;
             }
         }
@@ -58,7 +62,7 @@ public class gamemanager : MonoBehaviour
 
     void a_round()
     {
-
+        ball_detect.start = true;
         int[] temp1 = new int[10];
         int[] temp2 = new int[10];
         int random3 = Random.Range(1, 8);//幾顆球
@@ -86,19 +90,19 @@ public class gamemanager : MonoBehaviour
 
             else if (random1 == 0)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.road_postion[random2], ground_control.ground.pointer_out_pos), Quaternion.identity);
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.x[random2], ground_control.ground.pointer_out_pos[0]), Quaternion.identity);
             }
             else if (random1 == 1)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(-ground_control.ground.pointer_out_pos, ground_control.ground.road_postion[random2]), Quaternion.Euler(0, 0, 90));
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.pointer_out_pos[1], ground_control.ground.y[random2]), Quaternion.Euler(0, 0, 90));
             }
             else if (random1 == 2)
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.road_postion[random2], -ground_control.ground.pointer_out_pos), Quaternion.Euler(0, 0, 180));
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.x[random2], ground_control.ground.pointer_out_pos[2]), Quaternion.Euler(0, 0, 180));
             }
             else
             {
-                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.pointer_out_pos, ground_control.ground.road_postion[random2]), Quaternion.Euler(0, 0, 270));
+                game_pointer[i] = Instantiate(pointer, new Vector2(ground_control.ground.pointer_out_pos[3], ground_control.ground.y[random2]), Quaternion.Euler(0, 0, 270));
             }
             temp1[i] = random1;
             temp2[i] = random2;
@@ -113,7 +117,10 @@ public class gamemanager : MonoBehaviour
     void ball_roll()
     {
         if (man_control.man.lose == false)
+        {
             man_control.man.round++;
+            round_text.GetComponent<Text>().text="round:"+man_control.man.round.ToString();
+        }
 
         if (man_control.man.round - temp_round == 10)
         {

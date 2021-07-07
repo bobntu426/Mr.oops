@@ -5,6 +5,7 @@ public class ball_detect : MonoBehaviour
     public int index1, index2;
     public static int a = 0, b = 0;
     public static bool[,] has_ball;
+    public static bool start=false;
     private void Start()
     {
         index1 = b;
@@ -24,7 +25,8 @@ public class ball_detect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        has_ball[index1, index2] = true;
+        if(start)
+            has_ball[index1, index2] = true;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
