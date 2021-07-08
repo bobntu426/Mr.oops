@@ -35,7 +35,7 @@ public class level_button : MonoBehaviour
     public void level_finish_restart_button()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("level"+level_manager.manager.choose_level+"_scene");
+        SceneManager.LoadScene("level1-"+level_manager.manager.choose_level+"_scene");
 
     }
     public void return_choose_button()

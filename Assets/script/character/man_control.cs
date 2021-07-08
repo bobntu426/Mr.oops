@@ -106,11 +106,13 @@ public class man_control : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
-                if (ball_detect.has_ball[(int)man_pos.x + 1, (int)man_pos.y] == false && man_pos.x < 5)
-                {
-                    Instantiate(Resources.Load("prefab/character/man/move_sound"));
-                    man_pos += new Vector2(1f, 0);
-                    transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                if(man_pos.x < 5) {
+                    if (ball_detect.has_ball[(int)man_pos.x + 1, (int)man_pos.y] == false)
+                    {
+                        Instantiate(Resources.Load("prefab/character/man/move_sound"));
+                        man_pos += new Vector2(1f, 0);
+                        transform.position = position[(int)man_pos.x, (int)man_pos.y];
+                    }
 
                 }
             }
@@ -293,10 +295,10 @@ public class man_control : MonoBehaviour
         }
         else
         {
-            if (round > playerprefs_info.player.level_score[0])
+            if (round > playerprefs_info.player.world1_score[0])
             {
-                PlayerPrefs.SetInt("level" + level_manager.manager.choose_level + "_score", round);
-                playerprefs_info.player.level_score[0] = PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_score");
+                PlayerPrefs.SetInt("score1-" + level_manager.manager.choose_level, round);
+                playerprefs_info.player.world1_score[0] = PlayerPrefs.GetInt("level" + "score1-" + level_manager.manager.choose_level);
 
             }
             level_finish.round = round;

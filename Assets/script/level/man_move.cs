@@ -270,10 +270,10 @@ public class man_move : MonoBehaviour
     }
     void to_finish()
     {
-        if (round > playerprefs_info.player.level_score[0])
+        if (round > playerprefs_info.player.world1_score[0])
         {
-            PlayerPrefs.SetInt("level" + level_manager.manager.choose_level + "_score", round);
-            playerprefs_info.player.level_score[0] = PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_score");
+            PlayerPrefs.SetInt("level-1" + level_manager.manager.choose_level + "_score", round);
+            playerprefs_info.player.world1_score[0] = PlayerPrefs.GetInt("level" + level_manager.manager.choose_level + "_score");
 
         }
         level_finish.round = round;

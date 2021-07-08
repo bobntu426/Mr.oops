@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class level_manager : MonoBehaviour
 {
     public static level_manager manager;
-    public GameObject[] level;
+    public GameObject[] level,challenge;
     public GameObject level_status;
     public GameObject black_star1, black_star2, black_star3, star1, star2, star3, black_crown, crown,level_text,pass_text,highscore_text,goal1UI,goal2UI,goal3UI,goal4UI;
     public int choose_level;
@@ -43,7 +43,7 @@ public class level_manager : MonoBehaviour
             black_star1.SetActive(false);
             black_star2.SetActive(false);
             black_star3.SetActive(false);
-            choose_level = 1;
+            
             level_text.GetComponent<Text>().text = "level" + choose_level;
             pass_text.GetComponent<Text>().text = "篈Ч硄闽";
             highscore_text.GetComponent<Text>().text = "程ㄎ眔だ" + PlayerPrefs.GetInt(level_str);
@@ -59,7 +59,7 @@ public class level_manager : MonoBehaviour
             black_star1.SetActive(false);
             black_star2.SetActive(false);
             black_star3.SetActive(false);
-            choose_level = 1;
+            
             level_text.GetComponent<Text>().text = "level" + choose_level;
             pass_text.GetComponent<Text>().text = "篈硄闽" ;
             highscore_text.GetComponent<Text>().text = "程ㄎ眔だ" + PlayerPrefs.GetInt(level_str);
@@ -75,7 +75,7 @@ public class level_manager : MonoBehaviour
             black_star1.SetActive(false);
             black_star2.SetActive(false);
             black_star3.SetActive(true);
-            choose_level = 1;
+            
             level_text.GetComponent<Text>().text = "level" + choose_level;
             pass_text.GetComponent<Text>().text = "篈硄闽" ;
             highscore_text.GetComponent<Text>().text = "程ㄎ眔だ" + PlayerPrefs.GetInt(level_str);
@@ -92,7 +92,7 @@ public class level_manager : MonoBehaviour
             black_star2.SetActive(true);
             black_star3.SetActive(true);
 
-            choose_level = 1;
+            
             level_text.GetComponent<Text>().text = "level" + choose_level;
             pass_text.GetComponent<Text>().text = "篈硄闽" ;
             highscore_text.GetComponent<Text>().text = "程ㄎ眔だ" + PlayerPrefs.GetInt(level_str);
@@ -109,7 +109,7 @@ public class level_manager : MonoBehaviour
             black_star2.SetActive(true);
             black_star3.SetActive(true);
 
-            choose_level = 1;
+            
             level_text.GetComponent<Text>().text = "level" + choose_level;
             pass_text.GetComponent<Text>().text = "篈ゼ硄闽";
             highscore_text.GetComponent<Text>().text = "程ㄎ眔だ" + PlayerPrefs.GetInt(level_str);
