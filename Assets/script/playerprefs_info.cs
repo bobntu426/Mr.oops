@@ -9,7 +9,12 @@ public class playerprefs_info : MonoBehaviour
     //piayerprefs的key
 
     //進度
-    public int high_level;//已經破了第幾關了 key:
+    
+
+    
+    public int big_high_level;//已經破了第幾大關了 key:big_high_level
+    public int[] high_level = new int[6];//已經破了某大關的第幾小關了 key:high_level1, high_level2....
+
     public int[] world1_star = new int[10];
     public int[] world2_star = new int[10];
     public int[] world3_star = new int[10];
@@ -39,7 +44,6 @@ public class playerprefs_info : MonoBehaviour
 
     //目前選用的角色
     public string character_name;
-    Object character_pre;
     public GameObject character;
 
     //目前選用的場景
@@ -55,7 +59,7 @@ public class playerprefs_info : MonoBehaviour
         world1_star = new int[10];
         world1_score = new int[10];
         high_score = PlayerPrefs.GetInt("high_score");
-        high_level = PlayerPrefs.GetInt("high_level");
+        
         mushroom = PlayerPrefs.GetInt("mushroom");
         ice = PlayerPrefs.GetInt("ice");
         sun = PlayerPrefs.GetInt("sun");
@@ -67,6 +71,8 @@ public class playerprefs_info : MonoBehaviour
         scene_name = PlayerPrefs.GetString("scene_name");
         character = (GameObject)Resources.Load("prefab/character/" + character_name+"_in_game");
         scene = (GameObject)Resources.Load("prefab/character/" + scene_name);
+        big_high_level= PlayerPrefs.GetInt("big_hight_level");
+
         
         for(int i=0;i<10;i++)
             world1_score[i]= PlayerPrefs.GetInt("score1"+"-"+(i+1));
@@ -94,6 +100,10 @@ public class playerprefs_info : MonoBehaviour
             world5_star[i] = PlayerPrefs.GetInt("star5" + "-" + (i + 1));
         for (int i = 0; i < 10; i++)
             world6_star[i] = PlayerPrefs.GetInt("star6" + "-" + (i + 1));
+
+        for(int i=0;i<6;i++)
+            high_level[i] = PlayerPrefs.GetInt("high_level"+(i+1));
+
         if (character_name == "")
         {
             character = (GameObject)Resources.Load("prefab/character/man/man_in_game");

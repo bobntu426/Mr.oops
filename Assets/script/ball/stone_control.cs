@@ -6,6 +6,7 @@ public class stone_control : MonoBehaviour
 {
     public float speed=5;
     public GameObject sound;
+    bool had_pause=false;
     void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -40,6 +41,16 @@ public class stone_control : MonoBehaviour
     }
     private void Update()
     {
+        if (level_button.pause == true)
+        {
+            sound.GetComponent<AudioSource>().Pause();
+            had_pause = true;
+        }
+        if (level_button.pause == false && had_pause == true)
+        {
+            sound.GetComponent<AudioSource>().Play();
+            had_pause = false;
+        }
         if (gameObject.tag == "rolled")
         {
             if (transform.position.y > ground_control.ground.pointer_out_pos[0] ||

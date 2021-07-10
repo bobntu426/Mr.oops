@@ -27,7 +27,7 @@ public class button_control : MonoBehaviour
     }
     public void level_mode_button() 
     {
-        SceneManager.LoadScene("choose_level");
+        SceneManager.LoadScene("big_level_scene");
     }
 
     public void pause_button() 

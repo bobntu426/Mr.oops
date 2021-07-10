@@ -4,7 +4,7 @@ public class level1_manager : MonoBehaviour
 {
     public static level1_manager manager;
     public GameObject[] game_pointer;
-    public GameObject ball, pointer, man, detect,sound;
+    public GameObject ball, pointer,man, equipment, detect,sound;
     public int control, pointer_num, temp_round,random3;
     public float ball_speed;
     public float spawn_ball_speed, round_preriod;
@@ -23,8 +23,9 @@ public class level1_manager : MonoBehaviour
     void Start()
     {
         ball_detect.start = false;
-        man = Instantiate(playerprefs_info.player.character,new Vector2 (100f,100f),Quaternion.identity);
-        man.transform.localScale = man.transform.localScale * 0.878f;
+        Instantiate(man);
+        equipment = playerprefs_info.player.character;
+        
         ball_detect.has_ball = new bool[6, 6];
         man_control.man.lose = false;
         man_control.man.round = 0;

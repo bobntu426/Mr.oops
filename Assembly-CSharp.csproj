@@ -60,28 +60,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\script\button_control.cs" />
-    <Compile Include="Assets\script\character\man_control.cs" />
+    <Compile Include="Assets\script\man_control.cs" />
     <Compile Include="Assets\script\move_sound.cs" />
     <Compile Include="Assets\script\level\world1\level1\level1_info.cs" />
     <Compile Include="Assets\script\high_score.cs" />
     <Compile Include="Assets\script\finish_scene.cs" />
     <Compile Include="Assets\script\ball_detect.cs" />
-    <Compile Include="Assets\script\level\man_move.cs" />
     <Compile Include="Assets\script\character_button.cs" />
     <Compile Include="Assets\script\ball\iron_control.cs" />
+    <Compile Include="Assets\script\level\world1\level2\level2_info.cs" />
     <Compile Include="Assets\script\level\world1\level1\level1_manager.cs" />
     <Compile Include="Assets\script\level\level_manager.cs" />
     <Compile Include="Assets\script\ball\stone_control.cs" />
     <Compile Include="Assets\script\playerprefs_info.cs" />
     <Compile Include="Assets\script\ground_control.cs" />
+    <Compile Include="Assets\script\anime_control.cs" />
     <Compile Include="Assets\script\gamemanager.cs" />
     <Compile Include="Assets\script\status.cs" />
+    <Compile Include="Assets\script\level\world1\level2\level2_manager.cs" />
     <Compile Include="Assets\script\level\level_finish.cs" />
     <Compile Include="Assets\script\level\level_button.cs" />
     <Compile Include="Assets\script\choose_level_button.cs" />
-    <Compile Include="Assets\script\anime_control.cs" />
-    <Compile Include="Assets\script\level\world1\level2\level2_manager.cs" />
-    <Compile Include="Assets\script\level\world1\level2\level2_info.cs" />
+    <Compile Include="Assets\script\big_level_manager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
